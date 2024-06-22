@@ -1,0 +1,89 @@
+.price-details {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .price-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #333;
+
+        .discountt {
+            color: white;
+            background-color: #27ae60;
+            width: 20%;
+            text-align: center;
+            border-radius: 15px;
+            height: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .free {
+            color: #27ae60;
+        }
+
+        .know-more {
+            color: #ff6f61;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    }
+
+    .total-amount {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+    .continue-btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #e0e0e0;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .continue-btn:hover{
+        background-color: black;
+    }
+    .address-warning {
+        color: #ff6f61;
+        font-size: 12px;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 120px) and (max-width:375px) {
+
+    .price-details {
+        width: 250px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+}

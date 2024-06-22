@@ -29,10 +29,9 @@ const Footer = () => {
                         </div>
                         <div className="second">
                             <h3>Page</h3>
-                            <p><NavLink>Home</NavLink></p>
-                            <p><NavLink>Shop</NavLink></p>
-                            <p><NavLink>Product</NavLink></p>
-                            <p><NavLink>Contact Us</NavLink></p>
+                            <p><NavLink to='/'>Home</NavLink></p>
+                            <p><NavLink to='/shop'>Shop</NavLink></p>
+                            <p><NavLink to='/contact'>Contact Us</NavLink></p>
                         </div>
                         <div className="third">
                             <h3>Info</h3>
@@ -40,6 +39,12 @@ const Footer = () => {
                             <p><NavLink>Return & Refund</NavLink></p>
                             <p><NavLink>Support</NavLink></p>
                             <p><NavLink>FAQs</NavLink></p>
+                        </div>
+                        <div className="fourth">
+                            <h3>Join Newsletter</h3>
+                            <p>Subscribe our newsletter to get more deals, new products and promotions</p>
+                            <input type="email" placeholder='Enter your email' />
+                            <span><i class="ri-arrow-right-line"></i></span>
                         </div>
                     </div>
 

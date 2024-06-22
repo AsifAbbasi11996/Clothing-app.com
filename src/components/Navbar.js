@@ -46,26 +46,10 @@ const Navbar = () => {
                 {(
                   isOpen ?
                     <ul className='dropdown'>
-                      <li><NavLink to='/Aries'>Aries</NavLink></li>
-                      <li><NavLink to='/Taurus'>Taurus</NavLink></li>
-                      <li><NavLink to='/Gemini'>Gemini</NavLink></li>
-                      <li><NavLink to='/Cancer'>Cancer</NavLink></li>
-                    </ul>
-                    : null
-                )}
-              </li>
-              <li>
-                <NavLink to='/product' className="nav-link" activeClassName="active">Product</NavLink>
-                <div onClick={() => setIsOpen(!isOpen)}>
-                  <i class="ri-arrow-down-s-line"></i>
-                </div>
-                {(
-                  isOpen ?
-                    <ul className='dropdown'>
-                      <li><NavLink to='/Aries'>Aries</NavLink></li>
-                      <li><NavLink to='/Taurus'>Taurus</NavLink></li>
-                      <li><NavLink to='/Gemini'>Gemini</NavLink></li>
-                      <li><NavLink to='/Cancer'>Cancer</NavLink></li>
+                      <li><NavLink to='/shop1'>Shop 1</NavLink></li>
+                      <li><NavLink to='/shop2'>Shop 2</NavLink></li>
+                      <li><NavLink to='/shop3'>Shop 3</NavLink></li>
+                      <li><NavLink to='/shop4'>Shop 4</NavLink></li>
                     </ul>
                     : null
                 )}

@@ -7,7 +7,7 @@ const Home_Slider = () => {
     const sliderRef = useRef(null);
 
     const getData = async () => {
-        const response = await fetch('https://codify-api-541e.onrender.com/clothe/all', {
+        const response = await fetch('https://api-k7vh.onrender.com/clothe/all', {
             method: 'GET',
             headers: {
                 "Content-type": "application/json"

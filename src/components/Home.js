@@ -7,14 +7,14 @@ import Home_Slider from './Home_Slider'
 import men from '../assets/images/men.jpg'
 import women from '../assets/images/women.avif'
 import kids from '../assets/images/kids.webp'
-import scvideo from '../assets/images/summer-collectionbg.mp4'
 import sale from '../assets/images/sale.jpg'
+import scvideo from '../assets/images/summer-collection.mp4'
 
 const Home = () => {
   const [data, setData] = useState([])
 
   const getData = async () => {
-    const res = await fetch('https://codify-api-541e.onrender.com/clothe/all', {
+    const res = await fetch('https://api-k7vh.onrender.com/clothe/all', {
       method: 'GET',
       headerds: {
         "Content-type": "application/json"
@@ -58,7 +58,7 @@ const Home = () => {
 
       <Navbar />
       <div className="home_main-container">
-        {/* <div className="home-container">
+        <div className="home-container">
           <div className="left">
 
           </div>
@@ -72,7 +72,7 @@ const Home = () => {
               <NavLink><button>Shopping Now</button></NavLink>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <Home_Slider />
 
@@ -102,28 +102,36 @@ const Home = () => {
 
         <div className="collections">
           <div className="images">
-            <div className="text">
-              <h3>New Arrivals</h3>
-              <p>Collections <i class="ri-arrow-right-line"></i></p>
-            </div>
+            <NavLink to='/newarrivals'>
+              <div className="text">
+                <h3>New Arrivals</h3>
+                <p>Collections <i class="ri-arrow-right-line"></i></p>
+              </div>
+            </NavLink>
           </div>
           <div className="images">
-            <div className="text">
-              <h3>Trending Now</h3>
-              <p>Collections <i class="ri-arrow-right-line"></i></p>
-            </div>
+            <NavLink>
+              <div className="text">
+                <h3>Trending Now</h3>
+                <p>Collections <i class="ri-arrow-right-line"></i></p>
+              </div>
+            </NavLink>
           </div>
           <div className="images">
-            <div className="text">
-              <h3>Exclusive Collections</h3>
-              <p>Collections <i class="ri-arrow-right-line"></i></p>
-            </div>
+            <NavLink>
+              <div className="text">
+                <h3>Exclusive Collections</h3>
+                <p>Collections <i class="ri-arrow-right-line"></i></p>
+              </div>
+            </NavLink>
           </div>
           <div className="images">
-            <div className="text">
-              <h3>Western Wear</h3>
-              <p>Collections <i class="ri-arrow-right-line"></i></p>
-            </div>
+            <NavLink>
+              <div className="text">
+                <h3>Western Wear</h3>
+                <p>Collections <i class="ri-arrow-right-line"></i></p>
+              </div>
+            </NavLink>
           </div>
 
         </div>
@@ -190,7 +198,7 @@ const Home = () => {
           <video src={scvideo} autoPlay muted loop></video>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
