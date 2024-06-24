@@ -1,0 +1,28 @@
+.filters-container {
+    margin: 10px 0;
+    padding: 10px;
+    width: 210px;
+    background-color: #e5e5e5;
+
+    h2 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 10px 0;
+    }
+
+    input {
+        margin-right: 6px;
+        margin-top: 10px;
+    }
+
+    label {
+        margin-right: 20px;
+    }
+}

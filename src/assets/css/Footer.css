@@ -36,29 +36,6 @@ footer {
                     text-decoration: none;
                 }
             }
-
-            .fourth {
-
-                input {
-                    width: 70%;
-                    margin: 10px 0;
-                    padding: 10px;
-                    border-radius: 20px;
-                    border: 1px solid rgb(180, 180, 180);
-                }
-
-                span {
-                    
-                    i {
-                        margin-left: -35px;
-                        padding: 7px;
-                        color: white;
-                        background-color: rgb(84, 84, 254);
-                        border-radius: 50%;
-                        cursor: pointer;
-                    }
-                }
-            }
         }
 
 
@@ -124,13 +101,6 @@ footer {
 
             p {
                 font-size: 13px;
-            }
-
-            .fourth {
-
-                input {
-                    width: 90% !important;
-                }
             }
 
         }

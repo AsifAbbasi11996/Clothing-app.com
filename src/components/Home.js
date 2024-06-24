@@ -79,24 +79,30 @@ const Home = () => {
         <div className="categories">
           <h2>Shop By Categories</h2>
           <div className="clothes">
-            <div className="men-clothing">
-              <div className="img">
-                <img src={men} alt="" />
+            <NavLink to='/menclothing'>
+              <div className="men-clothing">
+                <div className="img">
+                  <img src={men} alt="" />
+                </div>
+                <p>Men's Clothing</p>
               </div>
-              <p>Men's Clothes</p>
-            </div>
-            <div className="women-clothing">
-              <div className="img">
-                <img src={women} alt="" />
+            </NavLink>
+            <NavLink to='/womenclothing'>
+              <div className="women-clothing">
+                <div className="img">
+                  <img src={women} alt="" />
+                </div>
+                <p>Women's Clothing</p>
               </div>
-              <p>Women's Clothing</p>
-            </div>
-            <div className="kids-clothing">
-              <div className="img">
-                <img src={kids} alt="" />
+            </NavLink>
+            <NavLink to='/kidsclothing'>
+              <div className="kids-clothing">
+                <div className="img">
+                  <img src={kids} alt="" />
+                </div>
+                <p>Kid's Clothing</p>
               </div>
-              <p>Kid's Clothing</p>
-            </div>
+            </NavLink>
           </div>
         </div>
 
@@ -163,7 +169,7 @@ const Home = () => {
               <p>sale up to 35% off</p>
               <h1>HUNDREDS of New lower prices!</h1>
               <p>Hurry up!!! Summer's heat is on its way!</p>
-              <p><NavLink>Shop Now <span><i class="ri-arrow-right-line"></i></span></NavLink></p>
+              <p><NavLink to='/shop'>Shop Now <span><i class="ri-arrow-right-line"></i></span></NavLink></p>
             </div>
           </div>
 

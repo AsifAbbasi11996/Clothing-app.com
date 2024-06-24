@@ -40,12 +40,6 @@ const Footer = () => {
                             <p><NavLink>Support</NavLink></p>
                             <p><NavLink>FAQs</NavLink></p>
                         </div>
-                        <div className="fourth">
-                            <h3>Join Newsletter</h3>
-                            <p>Subscribe our newsletter to get more deals, new products and promotions</p>
-                            <input type="email" placeholder='Enter your email' />
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </div>
                     </div>
 
                     <hr />
