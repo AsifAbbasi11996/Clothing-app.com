@@ -10,7 +10,6 @@
         justify-content: space-around;
         padding: 10px;
 
-
         .logo {
             width: 150px;
             height: 60px;
@@ -85,9 +84,19 @@
             align-items: center;
             gap: 20px;
 
+            a{
+                text-decoration: none;
+                color: black;
+                
+                i {
+                    font-size: 25px;
+                    color: rgb(62, 62, 62);
+                }
+            }
             i {
                 font-size: 25px;
                 color: rgb(62, 62, 62);
+                cursor: pointer;
             }
         }
 
@@ -109,7 +118,6 @@
                     font-size: 26px;
                 }
             }
-
 
             .lists {
 

@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.product-container {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    font-family: "Poppins", sans-serif;
+
+    .product-image {
+        width: 350px;
+        height: 400px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .product-details {
+        line-height: 1.7;
+
+        p:first-child,
+        .size,
+        .delivery,
+        .product {
+            text-transform: uppercase;
+        }
+
+        p:nth-child(2) {
+            color: #7a7a7a;
+        }
+
+        span {
+            margin-right: 10px;
+        }
+
+        p:nth-child(4) {
+            font-size: 12px;
+            color: rgb(212, 138, 1);
+        }
+
+        .more,
+        .size {
+            font-size: 12px;
+        }
+
+        .more-colors {
+            margin: 5px;
+
+            .clickable-image {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+                margin-right: 20px;
+                cursor: pointer;
+            }
+
+            .clickable-image:hover {
+                opacity: 0.8;
+            }
+        }
+
+        .sizes {
+            display: flex;
+
+            .m {
+                margin: 5px;
+                padding: 5px 10px;
+                background-color: #ededed;
+                cursor: pointer;
+            }
+
+            .m.selected {
+                padding: 5px 10px;
+                font-weight: bold;
+                color: black;
+                border: 1px solid #000;
+            }
+        }
+
+        .buttons {
+            margin: 20px 0;
+
+            a {
+                button {
+                    padding: 15px 50px;
+                    margin-right: 20px;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: black;
+                    background: white;
+                    border: 1px solid black;
+                    cursor: pointer;
+                }
+
+                .blue {
+                    background: rgb(97, 97, 243);
+                    color: white;
+                    border: 1px solid rgb(97, 97, 243);
+                }
+            }
+        }
+
+        .delivery-options {
+            margin: 20px 0;
+            line-height: 2;
+
+            h3 {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            i {
+                margin-left: 10px;
+                font-size: 20px;
+                font-weight: 400;
+            }
+
+            input {
+                padding: 10px;
+                margin: 10px 0;
+            }
+
+            ::placeholder {
+                font-weight: 550;
+            }
+
+
+            p:nth-child(4) {
+                font-size: 16px;
+                color: black;
+            }
+
+            .material {
+
+                span {
+
+                    p {
+                        font-weight: 500;
+                        color: black;
+                        text-transform: none;
+                    }
+                }
+            }
+
+            span {
+                margin-left: 20px;
+            }
+
+            .specifications {
+
+                .title {
+                    color: #7a7a7a;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                .data {
+                    font-weight: 500;
+                    color: black;
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: 120px) and (max-width: 1023px) {
+    .product-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 2rem;
+
+
+        .product-image {
+            display: flex;
+            justify-content: center;
+            background: none;
+            height: auto;
+
+            img {
+                width: 300px;
+                height: 300px;
+            }
+
+        }
+
+        .buttons {
+
+            a {
+                button {
+                    padding: 10px !important;
+                    font-size: 15px !important;
+                }
+            }
+        }
+
+        .delivery-options {
+            line-height: normal !important;
+
+            p {
+                margin: 10px 0;
+            }
+        }
+    }
+}

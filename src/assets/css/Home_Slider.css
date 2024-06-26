@@ -7,9 +7,15 @@
         .cards-container {
             display: flex;
 
-            .card {
-                box-sizing: border-box;
-                padding: 10px;
+            a {
+                text-decoration: none;
+                color: black;
+
+                .card {
+                    box-sizing: border-box;
+                    padding: 10px;
+
+                }
 
                 img {
                     width: 250px;
@@ -19,6 +25,7 @@
 
                 .name,
                 .sp {
+                    font-size: 18px;
                     font-weight: 500;
                 }
 

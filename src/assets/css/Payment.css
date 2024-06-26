@@ -22,50 +22,7 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
 
-        .left {
-            width: 600px;
-
-            .select {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: space-between;
-
-                p {
-                    font-size: 16px;
-                }
-
-                p:last-child {
-                    padding: 10px 15px;
-                    border: 1.2px solid black;
-                    border-radius: 10px;
-                    text-transform: uppercase;
-                }
-            }
-
-            .default_address {
-                line-height: 2;
-
-                .text {
-                    p {
-                        text-transform: uppercase;
-                    }
-                }
-
-                .box {
-                    margin: 10px 0;
-                    padding: 20px;
-                    border: 1px solid rgb(193, 193, 193);
-                    border-radius: 5px;
-
-                    p {
-                        span {
-                            text-transform: uppercase;
-                        }
-                    }
-                }
-            }
-        }
+        
 
         .right {
 
@@ -91,25 +48,9 @@
 
         .progress {
             justify-content: space-around;
+            
             p {
                 font-size: 16px;
-            }
-        }
-
-        .container{
-            .left{
-
-                .select{
-                    line-height: 1.5;
-
-                    p{
-                        font-size: 14px;
-                    }
-
-                    p:last-child {
-                        padding: 5px 10px;
-                    }
-                }
             }
         }
     }

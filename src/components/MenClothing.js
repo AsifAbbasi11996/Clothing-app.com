@@ -1,53 +1,61 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Filters from './Filters';
-import '../assets/css/MenClothing.css';
+import '../assets/css/Clothing.css';
 
 const MenClothing = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [selectedGender, setSelectedGender] = useState(''); 
+    const [selectedGender, setSelectedGender] = useState('Male'); 
 
     useEffect(() => {
-        fetch('https://api-k7vh.onrender.com/clothe/all')
-            .then(response => response.json())
-            .then(data => {
-                setProducts(data);
-                setFilteredProducts(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://api-k7vh.onrender.com/clothe/all');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                const data = await response.json();
+                const maleProducts = data.filter(product => product.Gender === 'Male');
+                setProducts(maleProducts);
+                setFilteredProducts(maleProducts);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
         <>
             <Navbar />
-            <div className="men_clothing-container">
+            <div className="clothing-container">
                 <div className="filter">
-                    {/* <h1>Men 's Clothing</h1>
-                    <p>{products.length}+ items</p>
-                    <Filters products={products} setFilteredProducts={setFilteredProducts} /> */}
-
-                    <h1>{selectedGender === 'Male' ? "Men's Clothing" : selectedGender === 'Female' ? "Women's Clothing" : "Clothing"}</h1>
-                    <p>{filteredProducts.length}+ items</p> {/* Use filteredProducts to show filtered count */}
+                    <h1>Men's Clothing</h1>
+                    <p>{filteredProducts.length}+ items</p> 
                     <Filters
                         products={products}
                         setFilteredProducts={setFilteredProducts}
-                        setSelectedGender={setSelectedGender} // Pass the setSelectedGender callback
+                        setSelectedGender={setSelectedGender}
+                        showGenderFilter={false} 
                     />
                 </div>
                 <div className="container">
-                    <h1>Clothing</h1>
+                    
                     <div className="products-container">
                         {filteredProducts.map(product => (
-                            <div key={product._id} className="product-card">
-                                <img src={product.Color[0].Images[0]} alt="" />
-                                <h3>{product.Name}</h3>
-                                <p>{product.Brand}</p>
-                                <p>{product.Gender}</p>
-                                <p>Selling Price : {product.SellingPrice}</p>
-                                <p>MRP : <del>{product.MRP}</del></p>
-                            </div>
+                            <NavLink key={product._id} to={`/product/${product._id}`} state={{ product }}>
+                                <div className="product-card">
+                                    <img src={product.Color[0].Images[0]} alt="" />
+                                    <h3>{product.Name}</h3>
+                                    <p className='brand'>{product.Brand}</p>
+                                    <p className='sp'>Selling Price : {product.SellingPrice}</p>
+                                    <p>MRP : <del>{product.MRP}</del></p>
+                                </div>
+                            </NavLink>
                         ))}
                     </div>
                 </div>
@@ -58,3 +66,4 @@ const MenClothing = () => {
 }
 
 export default MenClothing;
+

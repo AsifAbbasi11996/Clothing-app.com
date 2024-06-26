@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import '../assets/css/Home_Slider.css';
 
 const Home_Slider = () => {
@@ -49,32 +50,32 @@ const Home_Slider = () => {
     };
 
     return (
-        <>
-            <div className="home_slider-container">
-                <h2>Just In</h2>
-                <div className="slider-container" ref={sliderRef}>
-                    <div className="cards-container">
-                        {data.map((response, id) => (
-                            <div className="card" key={id}>
+        <div className="home_slider-container">
+            <h2>Just In</h2>
+            <div className="slider-container" ref={sliderRef}>
+                <div className="cards-container">
+                    {data.map((response, id) => (
+                        <NavLink to={`/product/${response._id}`} key={id} state={{ product: response }}>
+                            <div className="card">
                                 <img src={response.Color[0].Images[0]} alt="" />
                                 <p className='name'>{response.Name}</p>
                                 <p className='sp'>₹ {response.SellingPrice}</p>
                                 <p className='mrp'><del>₹ {response.MRP}</del></p>
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="dot-indicators">
-                    {Array(Math.ceil(data.length / 5)).fill().map((_, index) => (
-                        <span
-                            key={index}
-                            className={`dot ${currentSlide === index ? 'active' : ''}`}
-                            onClick={() => handleDotClick(index)}
-                        ></span>
+                        </NavLink>
                     ))}
                 </div>
             </div>
-        </>
+            <div className="dot-indicators">
+                {Array(Math.ceil(data.length / 5)).fill().map((_, index) => (
+                    <span
+                        key={index}
+                        className={`dot ${currentSlide === index ? 'active' : ''}`}
+                        onClick={() => handleDotClick(index)}
+                    ></span>
+                ))}
+            </div>
+        </div>
     );
 };
 

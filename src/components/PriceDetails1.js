@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../assets/css/PriceDetails.css';
 
-const PriceDetails = ({ product, quantity }) => {
+const PriceDetails1 = ({ product, quantity }) => {
     const [totalMRP, setTotalMRP] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [platformFee, setPlatformFee] = useState(20);
@@ -21,12 +20,6 @@ const PriceDetails = ({ product, quantity }) => {
     }, [product, quantity]);
 
     const totalAmount = totalMRP - discount + platformFee + shippingFee;
-
-    const navigate = useNavigate()
-
-    const navigateAddress = () => {
-        navigate('/address')
-    }
 
     return (
         <div className="price-details">
@@ -51,17 +44,10 @@ const PriceDetails = ({ product, quantity }) => {
                 <span>Total Amount</span>
                 <span>₹{totalAmount}</span>
             </div>
-            <button
-                className="continue-btn"
-                disabled={!product}
-                onClick={navigateAddress}
-            >
-                CONTINUE
-            </button>
+            <button className="continue-btn" disabled={!product}>CONTINUE</button>
             <p className="address-warning">Please enter a delivery address to continue.</p>
         </div>
     );
 };
 
-export default PriceDetails;
-
+export default PriceDetails1;

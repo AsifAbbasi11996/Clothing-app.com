@@ -1,82 +1,80 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import '../assets/css/Navbar.css'
-import logo from '../assets/images/logo.png'
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../assets/css/Navbar.css';
+import logo from '../assets/images/logo.png';
+import SignUpForm from './SignUpForm'; // Import SignUpForm component
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false)
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    };
 
-  const [click, setClick] = useState(false)
+    const handleSignUpClick = () => {
+        setShowSignUp(!showSignUp);
+    };
 
-  const handleClick = () => setClick(!click)
-
-  return (
-    <>
-      <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-        rel="stylesheet"
-      />
-      <div className="main-container">
-        <div className="navbar-container">
-
-          <div className="menu-bar" onClick={handleClick}>
-            {click ? (
-              <i class="ri-close-line"></i>
-            ) : (
-              <i class="ri-menu-line"></i>
-            )}
-          </div>
-
-          <div className="logo">
-            <NavLink to='/'><img src={logo} alt="" /></NavLink>
-          </div>
-
-          <div className="lists">
-            <ul className={click ? 'nav-links active' : 'nav-links'}>
-              <li>
-                <NavLink to='/' className="nav-link"
-                  activeClassName="active">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to='/shop' className="nav-link" activeClassName="active">Shop</NavLink>
-                <div onClick={() => setIsOpen(!isOpen)}>
-                  <i class="ri-arrow-down-s-line"></i>
+    return (
+        <>
+            <link
+                href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+                rel="stylesheet"
+            />
+            <div className="main-container">
+                <div className="navbar-container">
+                    <div className="menu-bar" onClick={handleClick}>
+                        {isOpen ? (
+                            <i className="ri-close-line"></i>
+                        ) : (
+                            <i className="ri-menu-line"></i>
+                        )}
+                    </div>
+                    <div className="logo">
+                        <NavLink to='/'>
+                            <img src={logo} alt="" />
+                        </NavLink>
+                    </div>
+                    <div className="lists">
+                        <ul className={isOpen ? 'nav-links active' : 'nav-links'}>
+                            <li>
+                                <NavLink to='/' className="nav-link" activeClassName="active">Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/menclothing' className="nav-link" activeClassName="active">Men</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/womenclothing' className="nav-link" activeClassName="active">Women</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/kidsclothing' className="nav-link" activeClassName="active">Kids</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/contact' className="nav-link" activeClassName="active">Contact Us</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="three-icons">
+                        <NavLink>
+                            <div className="search-bar">
+                                <i className="ri-search-line"></i>
+                            </div>
+                        </NavLink>
+                        <div className="account" onClick={handleSignUpClick}>
+                            <i className="ri-account-circle-line"></i>
+                            {showSignUp && <SignUpForm onClose={handleSignUpClick} />}
+                        </div>
+                        <NavLink>
+                            <div className="add-to-cart">
+                                <i className="ri-shopping-cart-line"></i>
+                            </div>
+                        </NavLink>
+                    </div>
                 </div>
-                {(
-                  isOpen ?
-                    <ul className='dropdown'>
-                      <li><NavLink to='/shop1'>Shop 1</NavLink></li>
-                      <li><NavLink to='/shop2'>Shop 2</NavLink></li>
-                      <li><NavLink to='/shop3'>Shop 3</NavLink></li>
-                      <li><NavLink to='/shop4'>Shop 4</NavLink></li>
-                    </ul>
-                    : null
-                )}
-              </li>
-              <li>
-                <NavLink to='/contact' className="nav-link" activeClassName="active">Contact Us</NavLink>
-              </li>
-
-
-            </ul>
-          </div>
-
-          <div className="three-icons">
-            <div className="search-bar">
-              <i class="ri-search-line"></i>
             </div>
-            <div className="account">
-              <i class="ri-account-circle-line"></i>
-            </div>
-            <div className="add-to-cart">
-              <i class="ri-shopping-cart-line"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
+        </>
+    );
+};
 
-export default Navbar
+export default Navbar;

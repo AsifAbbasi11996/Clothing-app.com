@@ -156,23 +156,28 @@
             justify-content: center;
             gap: 3rem;
 
-            .card {
-                width: 250px;
+            a {
+                text-decoration: none;
+                color: black;
 
-                img {
+                .card {
                     width: 250px;
-                    height: 250px;
-                    object-fit: cover;
+
+                    img {
+                        width: 250px;
+                        height: 250px;
+                        object-fit: cover;
+                    }
                 }
-            }
 
-            p {
-                font-weight: 500;
+                p {
+                    font-weight: 500;
 
-                span {
-                    margin-left: 10px;
-                    font-size: 14px;
-                    font-weight: 400;
+                    span {
+                        margin-left: 10px;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
                 }
             }
         }

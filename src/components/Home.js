@@ -146,18 +146,20 @@ const Home = () => {
           <h1>Best Seller</h1>
           <div className="cards">
             {randomArray.map((res, id) => (
-              <div className="card" key={id}>
-                <img src={res.Color[0].Images[0]} alt="" />
-                <p>
-                  <i class="ri-star-s-fill"></i>
-                  <i class="ri-star-s-fill"></i>
-                  <i class="ri-star-s-fill"></i>
-                  <i class="ri-star-s-fill"></i>
-                  <i class="ri-star-s-fill"></i>
-                </p>
-                <p className='name'>{res.Name}</p>
-                <p className='sp'>₹ {res.SellingPrice} <span><del>₹{res.MRP}</del></span></p>
-              </div>
+              <NavLink to={`/product/${res._id}`} key={id} state={{ product: res }}>
+                <div className="card" key={id}>
+                  <img src={res.Color[0].Images[0]} alt="" />
+                  <p>
+                    <i class="ri-star-s-fill"></i>
+                    <i class="ri-star-s-fill"></i>
+                    <i class="ri-star-s-fill"></i>
+                    <i class="ri-star-s-fill"></i>
+                    <i class="ri-star-s-fill"></i>
+                  </p>
+                  <p className='name'>{res.Name}</p>
+                  <p className='sp'>₹ {res.SellingPrice} <span><del>₹{res.MRP}</del></span></p>
+                </div>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -169,7 +171,7 @@ const Home = () => {
               <p>sale up to 35% off</p>
               <h1>HUNDREDS of New lower prices!</h1>
               <p>Hurry up!!! Summer's heat is on its way!</p>
-              <p><NavLink to='/shop'>Shop Now <span><i class="ri-arrow-right-line"></i></span></NavLink></p>
+              <p><NavLink to='/'>Shop Now <span><i class="ri-arrow-right-line"></i></span></NavLink></p>
             </div>
           </div>
 

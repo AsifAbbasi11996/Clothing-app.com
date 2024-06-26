@@ -2,7 +2,7 @@
     margin: 10px 0;
     padding: 10px;
     width: 210px;
-    background-color: #e5e5e5;
+    background-color: #efefef;
 
     h2 {
         font-size: 18px;
@@ -21,6 +21,24 @@
         margin-right: 6px;
         margin-top: 10px;
     }
+
+    .price-range{
+        margin-top: 20px;
+
+        label{
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        input{
+            width: 100%;
+        }
+    }
+
+    .selected-range{
+        margin-top: 10px;
+    }
+
 
     label {
         margin-right: 20px;
