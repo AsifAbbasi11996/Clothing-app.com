@@ -11,36 +11,10 @@ const OrderPlace = () => {
     const [selectedSize, setSelectedSize] = useState(product?.Sizes[0]?.Length || '');
     const [quantity, setQuantity] = useState(1);
     const [isItemVisible, setIsItemVisible] = useState(true);
-    const [pincode, setPincode] = useState('');
     const [deliveryDetails, setDeliveryDetails] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        
-        const latitude = 12.9716;
-        const longitude = 77.5946;
-
-        const fetchPincodeData = async (latitude, longitude) => {
-            try {
-                setLoading(true);
-                const response = await fetch(`https://example-api.com/pincode?lat=${latitude}&lng=${longitude}`);
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch pincode data');
-                }
-
-                const data = await response.json();
-                setDeliveryDetails(data.deliveryDetails); 
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPincodeData(latitude, longitude);
-    }, []); 
 
     if (!product) {
         return <p>Product data not found.</p>;
@@ -86,13 +60,13 @@ const OrderPlace = () => {
                 <div className="container">
                     <div className="left">
                         <div className="select">
-                            <p>Deliver to : <span>{pincode}</span></p>
+                            <p>Deliver to : <span>pincode</span></p>
                             <p>change address</p>
                         </div>
                         {isItemVisible && (
                             <>
                                 <div className="watchlist">
-                                    <p><input type="checkbox" /> {quantity}/1 items selected</p>
+                                    <p><input type="checkbox" /> <span>{quantity}/1 items selected</span></p>
                                 </div>
                                 <div className="items">
                                     <div className="item">
@@ -101,7 +75,7 @@ const OrderPlace = () => {
                                         </div>
                                         <div className="details">
                                             <p><span>{product.Brand}</span></p>
-                                            <p>{product.Name}</p>
+                                            <p className='name'>{product.Name}</p>
                                             <p>
                                                 <span className='size'>Size :
                                                     <select value={selectedSize} onChange={handleSizeChange}>

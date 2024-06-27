@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import '../assets/css/NewArrivals.css';
+import '../assets/css/Clothing.css';
 import Filters from './Filters';
 
 const NewArrivals = () => {
+  const location = useLocation();
+  const { headerText } = location.state || { headerText: 'New Arrivals' };
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedGender, setSelectedGender] = useState([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api-k7vh.onrender.com/clothe/all');
+        const response = await fetch('https://api-5e1h.onrender.com/clothe/all');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -31,19 +35,19 @@ const NewArrivals = () => {
   return (
     <>
       <Navbar />
-      <div className="new_arrival-container">
-        <div className="left-container">
-          <h1>New Arrivals</h1>
+      <div className="clothing-container">
+        <div className="filter">
+          <h1>{headerText}</h1>
           <p>{products.length}+ items</p>
           <Filters products={products} setFilteredProducts={setFilteredProducts} setSelectedGender={setSelectedGender} />
         </div>
 
-        <div className="right-container">
+        <div className="container">
           <div className="products-container">
             {filteredProducts.map((product) => (
               <NavLink key={product._id} to={`/product/${product._id}`} state={{ product }}>
                 <div className="product-card">
-                  <div className="image">
+                  <div className="img">
                     <img src={product.Color[0].Images[0]} alt="" />
                   </div>
                   <div className="details">

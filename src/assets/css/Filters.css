@@ -1,46 +1,130 @@
-.filters-container {
-    margin: 10px 0;
-    padding: 10px;
-    width: 210px;
-    background-color: #efefef;
+.flex {
+    display: flex;
 
-    h2 {
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    h3 {
-        font-size: 16px;
-        font-weight: 500;
+    .filters-container {
         margin: 10px 0;
-    }
+        padding: 10px;
+        width: 210px;
+        background-color: #efefef;
 
-    input {
-        margin-right: 6px;
-        margin-top: 10px;
-    }
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-    .price-range{
-        margin-top: 20px;
-
-        label{
+        h3 {
             font-size: 16px;
             font-weight: 500;
+            margin: 10px 0;
         }
 
-        input{
-            width: 100%;
+        .input {
+            display: flex;
+            align-items: center;
+            line-height: 1.8;
+
+            input {
+                margin-right: 10px;
+            }
         }
+
+
+        .price-range {
+            margin-top: 20px;
+            line-height: 1.8;
+
+            label {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+
+        .selected-range {
+            margin-top: 10px;
+
+            p {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+
+        label {
+            margin-right: 20px;
+        }
+
+    }
+}
+
+.filterbtn {
+    display: none;
+}
+
+.close {
+    display: none;
+}
+
+@media only screen and (min-width:120px) and (max-width:1023px) {
+    .filters-container {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 250px;
+        background: white;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+    }
+    
+    .filters-container.open {
+        left: 0;
+    }
+    
+    .filterbtn {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .filterbtn span {
+        margin-left: 10px;
+    }
+    
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        display: block;
+    }
+    
+    .flex {
+        position: relative;
     }
 
-    .selected-range{
-        margin-top: 10px;
-    }
+    
+}
 
-
-    label {
-        margin-right: 20px;
+@media (min-width: 768px) {
+    .filters-container {
+        position: static;
+        left: 0;
+        width: auto;
+        height: auto;
+        transition: none;
     }
 }

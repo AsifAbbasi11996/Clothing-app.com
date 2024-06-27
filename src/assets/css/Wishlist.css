@@ -3,22 +3,21 @@
         text-align: center;
     }
 
-    .add{
+    .add {
         margin: 20px;
         height: 400px;
     }
 
-    span{
+    span {
         margin-left: 20px;
     }
 
-    .buttons{
+    .buttons {
 
         button {
             padding: 15px 50px;
             margin-right: 20px;
             text-transform: uppercase;
-            font-size: 16px;
             font-weight: 500;
             color: black;
             background: white;
@@ -26,4 +25,35 @@
             cursor: pointer;
         }
     }
+}
+
+@media (min-width: 120px) and (max-width: 1023px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .product-details {
+        line-height: 1.8 !important;
+
+        .buttons {
+            display: flex;
+
+            button {
+                padding: 5px 10px !important;
+                
+            }
+
+        }
+
+        .product{
+            font-size: 16px;
+            font-weight: 600;
+
+            i{
+                font-weight: 500;
+            }
+        }
+    }
+
 }

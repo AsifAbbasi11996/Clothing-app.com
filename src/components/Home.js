@@ -4,17 +4,19 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import '../assets/css/Home.css'
 import Home_Slider from './Home_Slider'
+import hero from '../assets/images/hero.jpeg'
 import men from '../assets/images/men.jpg'
 import women from '../assets/images/women.avif'
 import kids from '../assets/images/kids.webp'
 import sale from '../assets/images/sale.jpg'
 import scvideo from '../assets/images/summer-collection.mp4'
 
+
 const Home = () => {
   const [data, setData] = useState([])
 
   const getData = async () => {
-    const res = await fetch('https://api-k7vh.onrender.com/clothe/all', {
+    const res = await fetch('https://api-5e1h.onrender.com/clothe/all', {
       method: 'GET',
       headerds: {
         "Content-type": "application/json"
@@ -60,7 +62,7 @@ const Home = () => {
       <div className="home_main-container">
         <div className="home-container">
           <div className="left">
-
+            <img src={hero} alt="" />
           </div>
           <div className="right">
             <div className="text">
@@ -107,38 +109,39 @@ const Home = () => {
         </div>
 
         <div className="collections">
-          <div className="images">
-            <NavLink to='/newarrivals'>
+          <div className="images img1">
+            <NavLink to='/newarrivals' state={{ headerText: 'New Arrivals' }}>
               <div className="text">
                 <h3>New Arrivals</h3>
-                <p>Collections <i class="ri-arrow-right-line"></i></p>
+                <p>Collections <i className="ri-arrow-right-line"></i></p>
               </div>
             </NavLink>
           </div>
-          <div className="images">
-            <NavLink>
+          <div className="images img2">
+            <NavLink to='/newarrivals' state={{ headerText: 'Trending Now' }}>
               <div className="text">
                 <h3>Trending Now</h3>
-                <p>Collections <i class="ri-arrow-right-line"></i></p>
+                <p>Collections <i className="ri-arrow-right-line"></i></p>
               </div>
             </NavLink>
           </div>
-          <div className="images">
-            <NavLink>
+          <div className="images img3">
+            <NavLink to='/newarrivals' state={{ headerText: 'Exclusive Collections' }}>
               <div className="text">
                 <h3>Exclusive Collections</h3>
-                <p>Collections <i class="ri-arrow-right-line"></i></p>
+                <p>Collections <i className="ri-arrow-right-line"></i></p>
               </div>
             </NavLink>
           </div>
-          <div className="images">
-            <NavLink>
+          <div className="images img4">
+            <NavLink to='/newarrivals' state={{ headerText: 'Western Wear' }}>
               <div className="text">
                 <h3>Western Wear</h3>
-                <p>Collections <i class="ri-arrow-right-line"></i></p>
+                <p>Collections <i className="ri-arrow-right-line"></i></p>
               </div>
             </NavLink>
           </div>
+
 
         </div>
 

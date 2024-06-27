@@ -15,15 +15,20 @@
         display: flex;
         align-items: center;
         background-color: #2a2a2a;
+        gap: 2rem;
 
 
         .left {
             max-width: 50vw;
             width: 100%;
-            height: 500px;
-            background-image: url('../images/hero.jpeg');
-            background-size: contain;
-            background-repeat: no-repeat;
+            height: 30rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 65%;
+            }
         }
 
         .right {
@@ -74,6 +79,7 @@
 
         .clothes {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             text-align: center;
             gap: 20px;
@@ -104,19 +110,19 @@
     }
 
     .collections {
-        padding: 20px 40px;
+        padding: 40px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: 3rem;
+        background-color: rgb(245, 245, 245);
 
         .images {
-            width: 550px;
+            width: 300px;
             height: 30rem;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            background: #ededed;
 
             a {
                 text-decoration: none;
@@ -137,6 +143,26 @@
                     }
                 }
             }
+        }
+
+        .img1{
+            background-image: url('../images/NewArrivals.webp');
+            background-size: cover;
+        }
+
+        .img2{
+            background-image: url('../images/TrendingNow.jpg');
+            background-size: cover;
+        }
+
+        .img3{
+            background-image: url('../images/Exclusive.jpg');
+            background-size: cover;
+        }
+
+        .img4{
+            background-image: url('../images/WesternWear.webp');
+            background-size: cover;
         }
     }
 
@@ -294,10 +320,11 @@
     .home-container {
         flex-direction: column;
         background-color: white !important;
+        gap: 0 !important;
 
         .left {
             max-width: none !important;
-            height: 300px !important;
+            /* height: 300px !important; */
             object-fit: cover;
         }
 
@@ -358,7 +385,8 @@
     }
 
     .collections {
-        padding: 5px !important;
+        padding: 10px !important;
+        gap: 2rem !important;
 
         .images {
             width: 150px !important;

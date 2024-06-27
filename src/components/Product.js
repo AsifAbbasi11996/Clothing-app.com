@@ -34,7 +34,7 @@ const Product = () => {
                     <p>{product.Name}</p>
                     <p>
                         <span><b>₹{product.SellingPrice}</b></span>
-                        <span><del>MRP : ₹{product.MRP}</del></span>
+                        <span className='mrp'><del>MRP : ₹{product.MRP}</del></span>
                     </p>
                     <p>Inclusive of all taxes</p>
                     <p className='more'><b>MORE COLOR</b></p>

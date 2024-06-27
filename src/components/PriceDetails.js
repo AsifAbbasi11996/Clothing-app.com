@@ -25,7 +25,7 @@ const PriceDetails = ({ product, quantity }) => {
     const navigate = useNavigate()
 
     const navigateAddress = () => {
-        navigate('/address')
+        navigate('/address', {state:{product:product}})
     }
 
     return (
@@ -51,11 +51,7 @@ const PriceDetails = ({ product, quantity }) => {
                 <span>Total Amount</span>
                 <span>₹{totalAmount}</span>
             </div>
-            <button
-                className="continue-btn"
-                disabled={!product}
-                onClick={navigateAddress}
-            >
+            <button className="continue-btn" disabled={!product} onClick={navigateAddress}>
                 CONTINUE
             </button>
             <p className="address-warning">Please enter a delivery address to continue.</p>

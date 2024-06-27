@@ -30,7 +30,7 @@ function App() {
         <Route path='/home_slider' element={<Home_Slider />} />
         <Route path='/newarrivals' element={<NewArrivals />} />
         <Route path='/orderplace/:id' element={<OrderPlace />} />
-        <Route path='/address/:id' element={<Address />} />
+        <Route path='/address' element={<Address />} />
         <Route path='/payment' element={<Payment />} />
         <Route path='/filters' element={<Filters />} />
         <Route path='/pricedetails' element={<PriceDetails />} />
