@@ -68,7 +68,7 @@ const Product = () => {
                             <button>buy now</button>
                         </NavLink>
 
-                        <NavLink key={product._id} to={`/wishlist/${product._id}`} state={{ product }}><button>add to wishlist <span><i class="ri-heart-line"></i></span></button></NavLink>
+                        <NavLink key={product._id} to={`/wishlist/${product._id}`} state={{ product }}><button>add to wishlist <span><i class="ri-heart-add-line"></i></span></button></NavLink>
                     </div>
                     <hr />
                     <div className="delivery-options">

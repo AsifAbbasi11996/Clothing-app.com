@@ -1,9 +1,9 @@
 import React from 'react'
 import '../assets/css/Footer.css'
 import { NavLink } from 'react-router-dom'
-import mastercard from '../assets/images/mastercard.png'
-import visa from '../assets/images/visa.png'
-import paypal from '../assets/images/paypal.png'
+// import mastercard from '../assets/images/mastercard.png'
+// import visa from '../assets/images/visa.png'
+// import paypal from '../assets/images/paypal.png'
 
 const Footer = () => {
     return (
@@ -30,7 +30,9 @@ const Footer = () => {
                         <div className="second">
                             <h3>Page</h3>
                             <p><NavLink to='/'>Home</NavLink></p>
-                            <p><NavLink to='/shop'>Shop</NavLink></p>
+                            <p><NavLink to='/menclothing'>Men</NavLink></p>
+                            <p><NavLink to='/womenclothing'>Women</NavLink></p>
+                            <p><NavLink to='/kidsclothing'>Kids</NavLink></p>
                             <p><NavLink to='/contact'>Contact Us</NavLink></p>
                         </div>
                         <div className="third">
@@ -50,11 +52,11 @@ const Footer = () => {
                             <p><NavLink>Privacy Policy</NavLink></p>
                             <p><NavLink>Terms & Conditions</NavLink></p>
                         </div>
-                        <div className="payment-methods">
+                        {/* <div className="payment-methods">
                             <div className="img"><img src={visa} alt="" /></div>
                             <div className="img"><img src={paypal} alt="" /></div>
                             <div className="img"><img src={mastercard} alt="" /></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </footer>

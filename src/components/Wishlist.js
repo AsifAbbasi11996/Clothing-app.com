@@ -6,16 +6,11 @@ const Wishlist = () => {
     const location = useLocation();
     const { product } = location.state || {};
     const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
-    const [selectedSize, setSelectedSize] = useState(null);
     const [isVisible, setIsVisible] = useState(true);
 
     if (!product) {
         return <p>Product data not found.</p>;
     }
-
-    const handleSizeClick = (size) => {
-        setSelectedSize(size);
-    };
 
     const handleRemoveClick = () => {
         setIsVisible(false);
@@ -24,7 +19,7 @@ const Wishlist = () => {
     return (
         <>
             <div className="wishlist-container">
-                <h1>Your Wishlist</h1>
+                <h1>Your items in your wishlist</h1>
                 {isVisible ? (
                     <div className="product-container1">
                         <div className="product-image">

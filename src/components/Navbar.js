@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/Navbar.css';
 import logo from '../assets/images/logo.png';
-import SignUpForm from './SignUpForm'; // Import SignUpForm component
+import SignUpForm from './SignUpForm';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -56,18 +56,25 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="three-icons">
-                        <NavLink>
-                            <div className="search-bar">
-                                <i className="ri-search-line"></i>
-                            </div>
-                        </NavLink>
+                        <div className="search-bar">
+                            <i className="ri-search-line"></i>
+                            <input type="search" placeholder="Search your clothes..." />
+                        </div>
+                        <div className="search-bar2">
+                            <i className="ri-search-line"></i>
+                        </div>
                         <div className="account" onClick={handleSignUpClick}>
                             <i className="ri-account-circle-line"></i>
                             {showSignUp && <SignUpForm onClose={handleSignUpClick} />}
                         </div>
-                        <NavLink>
+                        <NavLink to='/addtocart'>
                             <div className="add-to-cart">
                                 <i className="ri-shopping-cart-line"></i>
+                            </div>
+                        </NavLink>
+                        <NavLink to='/wishlist'>
+                            <div className="add-to-wishlist">
+                                <i className="ri-heart-line"></i>
                             </div>
                         </NavLink>
                     </div>

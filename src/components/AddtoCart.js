@@ -7,16 +7,11 @@ const AddtoCart = () => {
     const location = useLocation();
     const { product } = location.state || {};
     const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
-    const [selectedSize, setSelectedSize] = useState(null);
     const [isVisible, setIsVisible] = useState(true);
 
     if (!product) {
         return <p>Product data not found.</p>;
     }
-
-    const handleSizeClick = (size) => {
-        setSelectedSize(size);
-    };
 
     const handleRemoveClick = () => {
         setIsVisible(false);
@@ -25,7 +20,7 @@ const AddtoCart = () => {
         <>
             
             <div className="add-to-cart wishlist-container">
-                <h1>Your Items</h1>
+                <h1>Your items in your carts</h1>
                 {isVisible ? (
                     <div className="product-container1">
                         <div className="product-image">
