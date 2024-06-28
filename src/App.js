@@ -17,6 +17,8 @@ import Filters from './components/Filters';
 import Product from './components/Product';
 import Wishlist from './components/Wishlist';
 import SignUpForm from './components/SignUpForm';
+import AdminLogin from './Admin/AdminLogin';
+import Admin from './Admin/Admin';
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
         <Route path='/product/:id' element={<Product />} />
         <Route path='/wishlist/:id' element={<Wishlist />} />
         <Route path='/signup' element={<SignUpForm/>} />
+        <Route path='/adminlogin' element={<AdminLogin/>} />
+        <Route path='/admin' element={<Admin/>} />
       </Routes>
     </>
   );
