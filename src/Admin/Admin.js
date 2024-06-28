@@ -19,6 +19,10 @@ const Admin = () => {
         validate();
     }, [condition]);
 
+    const handleLogout = () => {
+        navigate(`/adminlogin`);
+    };
+
     const renderComponent = () => {
         switch (selectedButton) {
             case "button1":
@@ -31,16 +35,23 @@ const Admin = () => {
     return (
         <section className="admin-main">
             <div className="admin-container">
-                <div className="admin-buttons">
-                    <button
-                        onClick={() => setSelectedButton("button1")}
-                        style={{
-                            backgroundColor: selectedButton === "button1" ? "#ff6a00" : "inherit",
-                        }}
-                    >
-                        Add Clothe
-                    </button>
-
+                <div className="admin-header">
+                    <div className="admin-buttons">
+                        <button
+                            onClick={() => setSelectedButton("button1")}
+                            style={{
+                                backgroundColor: selectedButton === "button1" ? "#ff6a00" : "inherit",
+                            }}
+                        >
+                            Add Clothe
+                        </button>
+                        <div className="admin-logout">
+                            <button onClick={handleLogout}>Logout</button>
+                        </div>
+                    </div>
+                    {/* <div className="admin-logout">
+                        <button onClick={handleLogout}>Logout</button>
+                    </div> */}
                 </div>
                 <div className="admin-content">
                     {renderComponent()}
