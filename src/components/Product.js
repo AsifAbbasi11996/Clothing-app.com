@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
 import '../assets/css/Product.css';
 
 const Product = () => {
@@ -24,10 +22,14 @@ const Product = () => {
                 href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
                 rel="stylesheet"
             />
-            <Navbar />
+
             <div className="product-container">
                 <div className="product-image">
                     <img src={selectedImage} alt="product" />
+                    <div className="add-to-cart">
+                        <NavLink key={product._id} to={`/addtocart/${product._id}`} state={{ product }}><button>Add to Cart <span><i className="ri-shopping-cart-line"></i></span></button>
+                        </NavLink>
+                    </div>
                 </div>
                 <div className="product-details">
                     <p><b>{product.Brand}</b></p>
@@ -63,10 +65,10 @@ const Product = () => {
                     </div>
                     <div className="buttons">
                         <NavLink key={product._id} to={`/orderplace/${product._id}`} state={{ product, selectedImage }}>
-                            <button className='blue'>add to bag</button>
+                            <button>buy now</button>
                         </NavLink>
 
-                        <NavLink key={product._id} to={`/wishlist/${product._id}`} state={{ product }}><button>add to wishlist</button></NavLink>
+                        <NavLink key={product._id} to={`/wishlist/${product._id}`} state={{ product }}><button>add to wishlist <span><i class="ri-heart-line"></i></span></button></NavLink>
                     </div>
                     <hr />
                     <div className="delivery-options">
@@ -98,7 +100,7 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+
         </>
     );
 };

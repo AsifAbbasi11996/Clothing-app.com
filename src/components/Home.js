@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Navbar from './Navbar'
-import Footer from './Footer'
 import '../assets/css/Home.css'
 import Home_Slider from './Home_Slider'
 import hero from '../assets/images/hero.jpeg'
@@ -58,7 +56,7 @@ const Home = () => {
         rel="stylesheet"
       />
 
-      <Navbar />
+
       <div className="home_main-container">
         <div className="home-container">
           <div className="left">
@@ -209,7 +207,7 @@ const Home = () => {
           <video src={scvideo} autoPlay muted loop></video>
         </div>
       </div>
-      <Footer />
+
     </>
   )
 }

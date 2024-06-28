@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
 import '../assets/css/OrderPlace.css';
 import PriceDetails from './PriceDetails';
 
@@ -49,7 +47,7 @@ const OrderPlace = () => {
 
     return (
         <>
-            <Navbar />
+         
             <div className="orderplace-container">
                 <div className="progress">
                     <p className='bag'>Bag <span><i className="ri-checkbox-circle-fill"></i></span></p>
@@ -116,7 +114,7 @@ const OrderPlace = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+          
         </>
     );
 };

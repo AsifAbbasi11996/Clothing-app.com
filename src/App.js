@@ -17,14 +17,15 @@ import Filters from './components/Filters';
 import Product from './components/Product';
 import Wishlist from './components/Wishlist';
 import SignUpForm from './components/SignUpForm';
+import AddtoCart from './components/AddtoCart';
 
 
 function App() {
   return (
     <>
+<Navbar/> 
       <Routes>
-        <Route path='/navbar' element={<Navbar />} />
-        <Route path='/footer' element={<Footer />} />
+    
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/home_slider' element={<Home_Slider />} />
@@ -40,8 +41,10 @@ function App() {
         <Route path='/kidsclothing' element={<KidsClothing />} />
         <Route path='/product/:id' element={<Product />} />
         <Route path='/wishlist/:id' element={<Wishlist />} />
+        <Route path='/addtocart/:id' element={<AddtoCart />} />
         <Route path='/signup' element={<SignUpForm/>} />
       </Routes>
+<Footer/>
     </>
   );
 }

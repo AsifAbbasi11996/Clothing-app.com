@@ -16,6 +16,34 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .add-to-cart {
+            text-align: center;
+            margin-top: 20px;
+
+            a {
+
+                button {
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    padding: 10px 15px;
+                    border: 1px solid black;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    color: white;
+                    background-color: rgb(97, 97, 243);
+                    border: 1px solid rgb(97, 97, 243);
+
+                    span {
+
+                        i {
+                            font-size: 18px;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .product-details {
@@ -84,8 +112,9 @@
             margin: 20px 0;
 
             a {
+
                 button {
-                    padding: 15px 50px;
+                    padding: 15px 20px;
                     margin-right: 20px;
                     text-transform: uppercase;
                     font-size: 16px;
@@ -94,12 +123,18 @@
                     background: white;
                     border: 1px solid black;
                     cursor: pointer;
-                }
-
-                .blue {
+                    border-radius: 10px;
                     background: rgb(97, 97, 243);
                     color: white;
                     border: 1px solid rgb(97, 97, 243);
+
+                    span {
+
+                        i {
+                            font-size: 18px;
+                            margin-left: 10px;
+                        }
+                    }
                 }
             }
         }
@@ -169,8 +204,7 @@
 }
 
 
-
-@media (min-width: 120px) and (max-width: 1023px) {
+@media only screen and (min-width: 375px) and (max-width: 1023px) {
     .product-container {
         flex-direction: column;
         padding: 20px;
@@ -179,19 +213,36 @@
 
         .product-image {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             background: none;
             height: auto;
-            width: 283px;
+            width: 335px;
 
             img {
                 width: 100%;
                 height: 100%;
             }
 
+            .add-to-cart {
+                a {
+
+                    button {
+                        font-size: 14px;
+
+                        span {
+
+                            i {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
-        .mrp{
+        .mrp {
             font-size: 12px;
         }
 
@@ -201,6 +252,14 @@
                 button {
                     padding: 10px !important;
                     font-size: 15px !important;
+
+                    span {
+
+                        i {
+                            font-size: 15px !important;
+                            margin-left: 10px;
+                        }
+                    }
                 }
             }
         }
@@ -210,6 +269,69 @@
 
             p {
                 margin: 10px 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 120px) and (max-width: 375px) {
+
+    .product-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 2rem;
+
+
+        .product-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: none;
+            height: auto;
+            width: 280px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            a {
+
+                button {
+                    padding: 7px 10px !important;
+                    font-size: 12px !important;
+
+                    span {
+
+                        i {
+                            font-size: 12px !important;
+                            margin-left: 7px !important;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .mrp {
+            font-size: 12px;
+        }
+
+        .buttons {
+
+            a {
+                button {
+                    padding: 7px 10px !important;
+                    font-size: 12px !important;
+
+                    span {
+
+                        i {
+                            font-size: 13px !important;
+                            margin-left: 7px !important;
+                        }
+                    }
+                }
             }
         }
     }

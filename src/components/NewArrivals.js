@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
 import '../assets/css/Clothing.css';
 import Filters from './Filters';
 
@@ -34,7 +32,7 @@ const NewArrivals = () => {
 
   return (
     <>
-      <Navbar />
+
       <div className="clothing-container">
         <div className="filter">
           <h1>{headerText}</h1>
@@ -69,7 +67,7 @@ const NewArrivals = () => {
           </div>
         </div>
       </div>
-      <Footer />
+
     </>
   );
 };

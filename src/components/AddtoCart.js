@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import React, { useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom';
 import '../assets/css/Wishlist.css';
 
-const Wishlist = () => {
+const AddtoCart = () => {
+
     const location = useLocation();
     const { product } = location.state || {};
     const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
@@ -20,11 +21,11 @@ const Wishlist = () => {
     const handleRemoveClick = () => {
         setIsVisible(false);
     };
-
     return (
         <>
-            <div className="wishlist-container">
-                <h1>Your Wishlist</h1>
+            
+            <div className="add-to-cart wishlist-container">
+                <h1>Your Items</h1>
                 {isVisible ? (
                     <div className="product-container1">
                         <div className="product-image">
@@ -39,18 +40,20 @@ const Wishlist = () => {
                             </p>
                             <p className='taxes'>Inclusive of all taxes</p>
                             <div className="buttons">
-                                <NavLink key={product._id} to={`/addtocart/${product._id}`} state={{ product }}><button className='btn'>Add to Cart <span><i className="ri-shopping-cart-line"></i></span></button>
+                                <NavLink key={product._id} to={`/orderplace/${product._id}`} state={{ product, selectedImage }}>
+                                    <button className='btn'>buy now</button>
                                 </NavLink>
                                 <button className='btn icon' onClick={handleRemoveClick}><i class="ri-delete-bin-5-line"></i></button>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <p className='add'>No items in your wishlist</p>
+                    <p className='add'>No items in your cart</p>
                 )}
             </div>
+            
         </>
-    );
-};
+    )
+}
 
-export default Wishlist;
+export default AddtoCart
