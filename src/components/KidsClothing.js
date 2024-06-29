@@ -4,6 +4,12 @@ import Filters from './Filters';
 import '../assets/css/Clothing.css';
 
 const KidsClothing = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');

@@ -1,9 +1,6 @@
 import React from 'react'
 import '../assets/css/Footer.css'
 import { NavLink } from 'react-router-dom'
-// import mastercard from '../assets/images/mastercard.png'
-// import visa from '../assets/images/visa.png'
-// import paypal from '../assets/images/paypal.png'
 
 const Footer = () => {
     return (
@@ -52,11 +49,6 @@ const Footer = () => {
                             <p><NavLink>Privacy Policy</NavLink></p>
                             <p><NavLink>Terms & Conditions</NavLink></p>
                         </div>
-                        {/* <div className="payment-methods">
-                            <div className="img"><img src={visa} alt="" /></div>
-                            <div className="img"><img src={paypal} alt="" /></div>
-                            <div className="img"><img src={mastercard} alt="" /></div>
-                        </div> */}
                     </div>
                 </div>
             </footer>

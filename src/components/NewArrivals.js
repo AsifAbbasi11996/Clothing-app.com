@@ -4,6 +4,11 @@ import '../assets/css/Clothing.css';
 import Filters from './Filters';
 
 const NewArrivals = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   const location = useLocation();
   const { headerText } = location.state || { headerText: 'New Arrivals' };
 

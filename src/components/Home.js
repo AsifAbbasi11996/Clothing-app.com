@@ -11,6 +11,11 @@ import scvideo from '../assets/images/summer-collection.mp4'
 
 
 const Home = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   const [data, setData] = useState([])
 
   const getData = async () => {
@@ -69,7 +74,7 @@ const Home = () => {
               <p>Find yours with our collection and more.</p>
             </div>
             <div className="btn">
-              <NavLink><button>Shopping Now</button></NavLink>
+              <NavLink><button>Log In</button></NavLink>
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import Contact from './components/Contact';
 import Home_Slider from './components/Home_Slider';
 import NewArrivals from './components/NewArrivals';
 import OrderPlace from './components/OrderPlace';
@@ -49,7 +48,6 @@ function App() {
       <Navbar cartCount={cartCount} wishlistCount={wishlistCount} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
         <Route path='/home_slider' element={<Home_Slider />} />
         <Route path='/newarrivals' element={<NewArrivals />} />
         <Route path='/orderplace/:id' element={<OrderPlace />} />

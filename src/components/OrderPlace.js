@@ -4,6 +4,11 @@ import '../assets/css/OrderPlace.css';
 import PriceDetails from './PriceDetails';
 
 const OrderPlace = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     const location = useLocation();
     const { product, selectedImage } = location.state || {};
     const [selectedSize, setSelectedSize] = useState(product?.Sizes[0]?.Length || '');

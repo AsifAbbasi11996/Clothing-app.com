@@ -3,6 +3,11 @@ import { NavLink } from 'react-router-dom';
 import '../assets/css/Wishlist.css';
 
 const AddtoCart = ({ updateCartCount }) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [cart, setCart] = useState([]);
 
     useEffect(() => {

@@ -5,20 +5,29 @@ import '../assets/css/Product.css';
 const Product = ({ updateCartCount, updateWishlistCount }) => {
     const location = useLocation();
     const { product } = location.state || {};
-    const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
+    const [selectedImage, setSelectedImage] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
     const [addedToCart, setAddedToCart] = useState(false);
     const [addedToWishlist, setAddedToWishlist] = useState(false);
+    const [showCartPopup, setShowCartPopup] = useState(false);
+    const [showWishlistPopup, setShowWishlistPopup] = useState(false);
 
     useEffect(() => {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const isInCart = cartItems.some(item => item._id === product._id);
-        setAddedToCart(isInCart);
+        window.scrollTo(0, 0);
+    }, []);
 
-        const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
-        const isInWishlist = wishlistItems.some(item => item._id === product._id);
-        setAddedToWishlist(isInWishlist);
-    }, [product._id]);
+    useEffect(() => {
+        if (product) {
+            setSelectedImage(product.Color[0]?.Images[0]);
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const isInCart = cartItems.some(item => item._id === product._id);
+            setAddedToCart(isInCart);
+
+            const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const isInWishlist = wishlistItems.some(item => item._id === product._id);
+            setAddedToWishlist(isInWishlist);
+        }
+    }, [product]);
 
     if (!product) {
         return <p>Product data not found.</p>;
@@ -30,7 +39,7 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
 
     const handleAddToCart = () => {
         if (addedToCart) {
-            alert('Product is already added to the cart.');
+            setShowCartPopup(true);
             return;
         }
 
@@ -44,7 +53,7 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
 
     const handleAddToWishlist = () => {
         if (addedToWishlist) {
-            alert('Product is already added to the wishlist.');
+            setShowWishlistPopup(true);
             return;
         }
 
@@ -56,13 +65,20 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
         setAddedToWishlist(true);
     };
 
+    const closeCartPopup = () => {
+        setShowCartPopup(false);
+    };
+
+    const closeWishlistPopup = () => {
+        setShowWishlistPopup(false);
+    };
+
     return (
         <>
             <link
                 href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
                 rel="stylesheet"
             />
-
             <div className="product-container">
                 <div className="product-image">
                     <img src={selectedImage} alt="product" />
@@ -83,7 +99,7 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
                     <p>{product.Name}</p>
                     <p>
                         <span><b>₹{product.SellingPrice}</b></span>
-                        <span className='mrp'><del>MRP : ₹{product.MRP}</del></span>
+                        <span className='mrp'><del>MRP: ₹{product.MRP}</del></span>
                     </p>
                     <p>Inclusive of all taxes</p>
                     <p className='more'><b>MORE COLOR</b></p>
@@ -111,8 +127,8 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
                         ))}
                     </div>
                     <div className="buttons">
-                        <NavLink key={product._id} to={`/orderplace/${product._id}`} state={{ product, selectedImage }}>
-                            <button>buy now</button>
+                        <NavLink to={`/orderplace/${product._id}`} state={{ product, selectedImage }}>
+                            <button className='buynow'>buy now</button>
                         </NavLink>
 
                         <NavLink key={product._id} state={{ product, selectedImage }}>
@@ -133,7 +149,7 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
                             Delivery options <i className="ri-truck-line"></i>
                         </h3>
                         <input type="text" placeholder='Enter Pincode' />
-                        <p>Please Enter Your Pincode to check delivery time & Pay on Delivery Availability</p>
+                        <p>Please enter your pincode to check delivery time & pay on delivery availability</p>
                         <p>100% Original Products</p>
                         <p>Pay on delivery might be available</p>
                         <p>Easy 7 days returns and exchanges</p>
@@ -142,9 +158,7 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
                         </h3>
                         <p>{product.ProductDetail}</p>
                         <p><b>Size & Fit</b> <span>{product.SizeFit}</span></p>
-                        <p className='material'><b>Material & Care</b> <span>{product.MaterialCare.map((step, index) => (
-                            <span key={index}>{step}</span>
-                        ))}</span></p>
+                        <p className='material'><b>Material & Care</b> <span>{product.MaterialCare.join(', ')}</span></p>
                         <div className="specifications">
                             <p><b>Specifications</b></p>
                             {product.Specification.map((spec, index) => (
@@ -158,6 +172,23 @@ const Product = ({ updateCartCount, updateWishlistCount }) => {
                 </div>
             </div>
 
+            {showCartPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <span className="close" onClick={closeCartPopup}>&times;</span>
+                        <p>Product is already added to the cart.</p>
+                    </div>
+                </div>
+            )}
+
+            {showWishlistPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <span className="close" onClick={closeWishlistPopup}>&times;</span>
+                        <p>Product is already added to the wishlist.</p>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

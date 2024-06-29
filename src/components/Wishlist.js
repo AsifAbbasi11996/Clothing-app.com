@@ -3,25 +3,39 @@ import { NavLink } from 'react-router-dom';
 import '../assets/css/Wishlist.css';
 
 const Wishlist = ({ updateWishlistCount }) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     const [wishlist, setWishlist] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
         setWishlist(wishlistItems);
-        updateWishlistCount(wishlistItems.length)
+        updateWishlistCount(wishlistItems.length);
+
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        setCartItems(cartItems);
     }, [updateWishlistCount]);
 
     const handleRemoveClick = (index) => {
         const updatedWishlist = wishlist.filter((_, i) => i !== index);
         setWishlist(updatedWishlist);
         localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-        updateWishlistCount(updatedWishlist.length)
+        updateWishlistCount(updatedWishlist.length);
     };
 
     const handleAddToCart = (product) => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(product);
         localStorage.setItem('cart', JSON.stringify(cart));
+        setCartItems(cart);
+    };
+
+    const isInCart = (product) => {
+        return cartItems.some(item => item._id === product._id);
     };
 
     return (
@@ -44,8 +58,8 @@ const Wishlist = ({ updateWishlistCount }) => {
                                 <p className='taxes'>Inclusive of all taxes</p>
                                 <div className="buttons">
                                     <NavLink key={product._id} state={{ product, selectedImage: product.selectedImage }}>
-                                        <button className='btn' onClick={() => handleAddToCart(product)}>
-                                            Add to Cart <span><i className="ri-shopping-cart-line"></i></span>
+                                        <button className='btn' onClick={() => handleAddToCart(product)} disabled={isInCart(product)}>
+                                            {isInCart(product) ? 'Added to Cart' : 'Add to Cart'} <span><i className="ri-shopping-cart-line"></i></span>
                                         </button>
                                     </NavLink>
                                     <button className='btn icon' onClick={() => handleRemoveClick(index)}>

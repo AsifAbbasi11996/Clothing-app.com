@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../assets/css/Navbar.css';
 import logo from '../assets/images/logo.png';
 import SignUpForm from './SignUpForm';
+import axios from 'axios';
 
 const Navbar = ({ cartCount, wishlistCount }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const navigate = useNavigate();
 
     const handleClick = () => {
         setIsOpen(!isOpen);
@@ -14,6 +18,33 @@ const Navbar = ({ cartCount, wishlistCount }) => {
 
     const handleSignUpClick = () => {
         setShowSignUp(!showSignUp);
+    };
+
+    useEffect(() => {
+        if (searchTerm) {
+            axios.get('https://api-5e1h.onrender.com/clothe/all')
+                .then((response) => {
+                    const products = response.data;
+                    const filtered = products.filter((product) =>
+                        product.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        product.Gender.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        product.Category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        product.Type.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+                    setSuggestions(filtered);
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
+        } else {
+            setSuggestions([]);
+        }
+    }, [searchTerm]);
+
+    const handleSearchSelect = (product) => {
+        navigate(`/product/${product._id}`, { state : { product }});
+        setSearchTerm('');
+        setSuggestions([]);
     };
 
     return (
@@ -50,15 +81,26 @@ const Navbar = ({ cartCount, wishlistCount }) => {
                             <li>
                                 <NavLink to='/kidsclothing' className="nav-link" activeClassName="active">Kids</NavLink>
                             </li>
-                            <li>
-                                <NavLink to='/contact' className="nav-link" activeClassName="active">Contact Us</NavLink>
-                            </li>
                         </ul>
                     </div>
                     <div className="three-icons">
                         <div className="search-bar">
                             <i className="ri-search-line"></i>
-                            <input type="search" placeholder="Search your clothes..." />
+                            <input
+                                type="search"
+                                placeholder="Search your clothes..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            {suggestions.length > 0 && (
+                                <ul className="suggestions-list">
+                                    {suggestions.map((item) => (
+                                        <li key={item._id} onClick={() => handleSearchSelect(item)}>
+                                            {item.Name} - {item.Brand}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </div>
                         <div className="search-bar2">
                             <i className="ri-search-line"></i>
@@ -87,4 +129,3 @@ const Navbar = ({ cartCount, wishlistCount }) => {
 };
 
 export default Navbar;
-

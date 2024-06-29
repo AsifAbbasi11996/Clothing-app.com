@@ -110,6 +110,16 @@
 
             a {
 
+                .buynow{
+                    background-color: #fff;
+                    color: rgb(97, 97, 243);
+                }
+
+                .buynow:hover{
+                    background-color: rgb(97, 97, 243);
+                    color: #fff;
+                }
+
                 button {
                     padding: 15px 20px;
                     margin-right: 20px;

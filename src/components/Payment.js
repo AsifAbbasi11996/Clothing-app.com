@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../assets/css/Payment.css'
 import PriceDetails from './PriceDetails'
 
 const Payment = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <div className="payment-container">
