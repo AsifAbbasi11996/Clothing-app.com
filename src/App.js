@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,13 +22,32 @@ import AdminLogin from './Admin/AdminLogin';
 import Admin from './Admin/Admin';
 import AddtoCart from './components/AddtoCart';
 
-
 function App() {
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
+
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartCount(cartItems.length);
+  }, []);
+
+  const updateCartCount = (count) => {
+    setCartCount(count);
+  };
+
+  useEffect(() => {
+    const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+    setWishlistCount(wishlistItems.length);
+  }, []);
+
+  const updateWishlistCount = (count) => {
+    setWishlistCount(count);
+  };
+
   return (
     <>
-<Navbar/> 
+      <Navbar cartCount={cartCount} wishlistCount={wishlistCount} />
       <Routes>
-    
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/home_slider' element={<Home_Slider />} />
@@ -41,14 +61,14 @@ function App() {
         <Route path='/menclothing' element={<MenClothing />} />
         <Route path='/womenclothing' element={<WomenClothing />} />
         <Route path='/kidsclothing' element={<KidsClothing />} />
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='/wishlist/:id' element={<Wishlist />} />
-        <Route path='/addtocart/:id' element={<AddtoCart />} />
-        <Route path='/signup' element={<SignUpForm/>} />
-        <Route path='/adminlogin' element={<AdminLogin/>} />
-        <Route path='/admin' element={<Admin/>} />
+        <Route path='/product/:id' element={<Product updateCartCount={updateCartCount} updateWishlistCount={updateWishlistCount} />} />
+        <Route path='/wishlist' element={<Wishlist updateWishlistCount={updateWishlistCount} updateCartCount={updateCartCount} />} />
+        <Route path='/addtocart' element={<AddtoCart updateCartCount={updateCartCount} />} />
+        <Route path='/signup' element={<SignUpForm />} />
+        <Route path='/adminlogin' element={<AdminLogin />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
-<Footer/>
+      <Footer />
     </>
   );
 }

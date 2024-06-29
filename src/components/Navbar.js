@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/Navbar.css';
 import logo from '../assets/images/logo.png';
 import SignUpForm from './SignUpForm';
 
-const Navbar = () => {
+const Navbar = ({ cartCount, wishlistCount }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
 
@@ -33,7 +33,7 @@ const Navbar = () => {
                     </div>
                     <div className="logo">
                         <NavLink to='/'>
-                            <img src={logo} alt="" />
+                            <img src={logo} alt="logo" />
                         </NavLink>
                     </div>
                     <div className="lists">
@@ -70,11 +70,13 @@ const Navbar = () => {
                         <NavLink to='/addtocart'>
                             <div className="add-to-cart">
                                 <i className="ri-shopping-cart-line"></i>
+                                {cartCount > 0 && <span>{cartCount}</span>}
                             </div>
                         </NavLink>
                         <NavLink to='/wishlist'>
                             <div className="add-to-wishlist">
                                 <i className="ri-heart-line"></i>
+                                {wishlistCount > 0 && <span>{wishlistCount}</span>}
                             </div>
                         </NavLink>
                     </div>
@@ -85,3 +87,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

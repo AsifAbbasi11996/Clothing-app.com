@@ -1,45 +1,60 @@
-import React, { useState } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import '../assets/css/Wishlist.css';
 
-const Wishlist = () => {
-    const location = useLocation();
-    const { product } = location.state || {};
-    const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
-    const [isVisible, setIsVisible] = useState(true);
+const Wishlist = ({ updateWishlistCount }) => {
+    const [wishlist, setWishlist] = useState([]);
 
-    if (!product) {
-        return <p>Product data not found.</p>;
-    }
+    useEffect(() => {
+        const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+        setWishlist(wishlistItems);
+        updateWishlistCount(wishlistItems.length)
+    }, [updateWishlistCount]);
 
-    const handleRemoveClick = () => {
-        setIsVisible(false);
+    const handleRemoveClick = (index) => {
+        const updatedWishlist = wishlist.filter((_, i) => i !== index);
+        setWishlist(updatedWishlist);
+        localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+        updateWishlistCount(updatedWishlist.length)
+    };
+
+    const handleAddToCart = (product) => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
     };
 
     return (
         <>
             <div className="wishlist-container">
                 <h1>Your items in your wishlist</h1>
-                {isVisible ? (
-                    <div className="product-container1">
-                        <div className="product-image">
-                            <img src={selectedImage} alt="product" />
-                        </div>
-                        <div className="product-details">
-                            <p className='brand'><b>{product.Brand}</b></p>
-                            <p className='name'>{product.Name}</p>
-                            <p>
-                                <span className='sp'><b>₹{product.SellingPrice}</b></span>
-                                <span className='mrp'><del>MRP : ₹{product.MRP}</del></span>
-                            </p>
-                            <p className='taxes'>Inclusive of all taxes</p>
-                            <div className="buttons">
-                                <NavLink key={product._id} to={`/addtocart/${product._id}`} state={{ product }}><button className='btn'>Add to Cart <span><i className="ri-shopping-cart-line"></i></span></button>
-                                </NavLink>
-                                <button className='btn icon' onClick={handleRemoveClick}><i class="ri-delete-bin-5-line"></i></button>
+                {wishlist.length ? (
+                    wishlist.map((product, index) => (
+                        <div key={index} className="product-container1">
+                            <div className="product-image">
+                                <img src={product.selectedImage} alt="product" />
+                            </div>
+                            <div className="product-details">
+                                <p className='brand'><b>{product.Brand}</b></p>
+                                <p className='name'>{product.Name}</p>
+                                <p>
+                                    <span className='sp'><b>₹{product.SellingPrice}</b></span>
+                                    <span className='mrp'><del>MRP : ₹{product.MRP}</del></span>
+                                </p>
+                                <p className='taxes'>Inclusive of all taxes</p>
+                                <div className="buttons">
+                                    <NavLink key={product._id} state={{ product, selectedImage: product.selectedImage }}>
+                                        <button className='btn' onClick={() => handleAddToCart(product)}>
+                                            Add to Cart <span><i className="ri-shopping-cart-line"></i></span>
+                                        </button>
+                                    </NavLink>
+                                    <button className='btn icon' onClick={() => handleRemoveClick(index)}>
+                                        <i className="ri-delete-bin-5-line"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    ))
                 ) : (
                     <p className='add'>No items in your wishlist</p>
                 )}

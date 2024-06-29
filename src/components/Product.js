@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import '../assets/css/Product.css';
 
-const Product = () => {
+const Product = ({ updateCartCount, updateWishlistCount }) => {
     const location = useLocation();
     const { product } = location.state || {};
     const [selectedImage, setSelectedImage] = useState(product?.Color[0].Images[0]);
     const [selectedSize, setSelectedSize] = useState(null);
+    const [addedToCart, setAddedToCart] = useState(false);
+    const [addedToWishlist, setAddedToWishlist] = useState(false);
+
+    useEffect(() => {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const isInCart = cartItems.some(item => item._id === product._id);
+        setAddedToCart(isInCart);
+
+        const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const isInWishlist = wishlistItems.some(item => item._id === product._id);
+        setAddedToWishlist(isInWishlist);
+    }, [product._id]);
 
     if (!product) {
         return <p>Product data not found.</p>;
@@ -14,6 +26,34 @@ const Product = () => {
 
     const handleSizeClick = (size) => {
         setSelectedSize(size);
+    };
+
+    const handleAddToCart = () => {
+        if (addedToCart) {
+            alert('Product is already added to the cart.');
+            return;
+        }
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItem = { ...product, selectedImage, selectedSize };
+        cart.push(cartItem);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount(cart.length);
+        setAddedToCart(true);
+    };
+
+    const handleAddToWishlist = () => {
+        if (addedToWishlist) {
+            alert('Product is already added to the wishlist.');
+            return;
+        }
+
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const wishlistItem = { ...product, selectedImage, selectedSize };
+        wishlist.push(wishlistItem);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        updateWishlistCount(wishlist.length);
+        setAddedToWishlist(true);
     };
 
     return (
@@ -27,8 +67,15 @@ const Product = () => {
                 <div className="product-image">
                     <img src={selectedImage} alt="product" />
                     <div className="add-to-cart">
-                        <NavLink key={product._id} to={`/addtocart/${product._id}`} state={{ product }}><button>Add to Cart <span><i className="ri-shopping-cart-line"></i></span></button>
-                        </NavLink>
+                        {addedToCart ? (
+                            <button disabled>
+                                Added to Cart <span><i className="ri-shopping-cart-line"></i></span>
+                            </button>
+                        ) : (
+                            <button onClick={handleAddToCart}>
+                                Add to Cart <span><i className="ri-shopping-cart-line"></i></span>
+                            </button>
+                        )}
                     </div>
                 </div>
                 <div className="product-details">
@@ -68,7 +115,17 @@ const Product = () => {
                             <button>buy now</button>
                         </NavLink>
 
-                        <NavLink key={product._id} to={`/wishlist/${product._id}`} state={{ product }}><button>add to wishlist <span><i class="ri-heart-add-line"></i></span></button></NavLink>
+                        <NavLink key={product._id} state={{ product, selectedImage }}>
+                            {addedToWishlist ? (
+                                <button disabled>
+                                    Added to Wishlist <span><i className="ri-heart-add-line"></i></span>
+                                </button>
+                            ) : (
+                                <button onClick={handleAddToWishlist}>
+                                    Add to Wishlist <span><i className="ri-heart-add-line"></i></span>
+                                </button>
+                            )}
+                        </NavLink>
                     </div>
                     <hr />
                     <div className="delivery-options">
