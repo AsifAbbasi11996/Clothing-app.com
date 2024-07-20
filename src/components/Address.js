@@ -47,7 +47,7 @@ const Address = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Logic to save the new address
+
         console.log('New Address:', newAddress);
         setShowForm(false);
     };
